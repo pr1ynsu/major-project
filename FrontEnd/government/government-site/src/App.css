@@ -57,35 +57,29 @@ body {
   background: #89ac64;
 }
 
-/* Search Section */
-.search-section {
+/* Search + Navigation in One Row */
+.search-nav {
   margin-top: 50px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
-.search-bar {
+.search-nav input {
   padding: 10px;
-  width: 300px;
+  width: 250px;
   border: 2px solid #A2C579;
   border-radius: 5px;
   background: #013220;
   color: #F5F5DC;
-  outline: none;
 }
 
-.search-bar::placeholder {
+.search-nav input::placeholder {
   color: #C8D9B0;
 }
 
-/* Nav Buttons */
-.nav-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.nav-buttons button {
+.search-nav button {
   padding: 10px 15px;
   border: none;
   background: #A2C579;
@@ -93,16 +87,15 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, background 0.3s ease;
 }
 
-.nav-buttons button:hover {
+.search-nav button:hover {
   transform: scale(1.05);
   background: #89ac64;
 }
 
-/* News Slider */
+/* News Slider - Hover Scroll */
 .news-slider {
   margin-top: 50px;
   background: #024731;
@@ -111,7 +104,18 @@ body {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
   overflow: hidden;
   white-space: nowrap;
-  animation: scrollText 10s linear infinite;
+  position: relative;
+}
+
+.news-slider p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollText 20s linear infinite;
+  animation-play-state: paused; /* Stop by default */
+}
+
+.news-slider:hover p {
+  animation-play-state: running; /* Start on hover */
 }
 
 @keyframes scrollText {

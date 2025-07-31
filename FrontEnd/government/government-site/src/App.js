@@ -7,25 +7,27 @@ function App() {
       <div className="top-bar">
         <div className="logo-box">Gov Logo</div>
         <div className="circle-buttons">
-          <div className="circle">Gov</div>
-          <div className="circle">Dev</div>
+          <div className="circle">About</div>
+          <div className="circle">Developer</div>
           <div className="circle">User</div>
         </div>
       </div>
 
-      {/* Search Section */}
-      <div className="search-section">
+      {/* Search + Nav in One Line */}
+      <div className="search-nav">
         <input className="search-bar" placeholder="Search..." />
-        <div className="nav-buttons">
-          <button>Outstanding Due</button>
-          <button>Rewards</button>
-          <button>Fines</button>
-        </div>
+        <button>Outstanding Due</button>
+        <button>Rewards</button>
+        <button>Fines</button>
       </div>
 
       {/* News Slider */}
       <div className="news-slider">
-        <p>Government News & Updates will appear here...</p>
+        <p>
+          Latest Government Updates: New schemes launched | Tax filing deadline
+          extended | New traffic rules implemented | Subsidies for rural
+          farmers...
+        </p>
       </div>
     </div>
   );
