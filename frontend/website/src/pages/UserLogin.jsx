@@ -1,22 +1,63 @@
-export default function GovernmentLogin() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./UserLogin.css";
+
+export default function UserLogin() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false); // Track wrong login
+
+  const handleLogin = () => {
+    // Pseudo authentication
+    if (email === "test@example.com" && password === "12345") {
+      navigate("/chalan");
+    } else {
+      setLoginError(true); // Show error
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50">
-      <div className="bg-white border border-black rounded-xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Government Login</h2>
-        
+    <div className="login-page">
+      {/* Background Video */}
+      <video autoPlay loop muted className="bg-video">
+        <source src="/bg-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay */}
+      <div className="overlay"></div>
+
+      {/* Login Box */}
+      <div className="login-box">
+        <h2>User Login</h2>
         <input
           type="email"
           placeholder="Email"
-          className="w-full px-3 py-2 mb-4 border border-gray-400 rounded-lg"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full px-3 py-2 mb-6 border border-gray-400 rounded-lg"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
-          Log In
-        </button>
+        <button onClick={handleLogin}>Login</button>
+
+        {/* Show error message with links if wrong login */}
+        {loginError && (
+          <div className="error-message">
+            <p>Incorrect password!</p>
+            <div className="error-links">
+              <span onClick={() => navigate("/forgot-password")}>
+                Forgot Password?
+              </span>
+              <span onClick={() => navigate("/signup")}>
+                Register Now
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

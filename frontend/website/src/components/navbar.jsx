@@ -1,29 +1,27 @@
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 export default function Navbar() {
   return (
-    <nav className="absolute top-0 left-0 w-full z-10 text-black">
-      {/* Top Row */}
-      <div className="flex items-center justify-between px-8 py-4">
+    <nav className="navbar">
+      {/* Top Header Row */}
+      <div className="navbar-top">
         {/* Logo */}
-        <div className="flex flex-col">
-          <div className="bg-white text-white px-6 py-2 font-serif text-lg tracking-wider">
-            CITYWATCH
-          </div>
-          <span className="text-xs tracking-widest mt-1 ml-1">TECHNOLOGY</span>
+        <div className="logo-container">
+          <img src="/logo.jpg" alt="Logo" className="logo" />
         </div>
 
-        {/* Sign up / Log in button */}
+        {/* Sign up / Log in */}
         <Link to="/login">
-        <button className="px-6 py-2 text-lg border border-black rounded-full bg-pink-100 shadow-md hover:bg-pink-200">
-            sign up/ log in
-        </button>
+          <button className="login-btn">
+            Sign Up / Log In
+          </button>
         </Link>
       </div>
 
       {/* Nav Links */}
-      <div className="flex justify-center">
-        <ul className="flex justify-between w-3/4 max-w-4xl py-2 font-serif font-medium text-lg">
+      <div className="navbar-links">
+        <ul>
           <li><a href="#">HOME</a></li>
           <li><a href="#">BLOG</a></li>
           <li><a href="#">GALLERY</a></li>
@@ -33,10 +31,6 @@ export default function Navbar() {
           <li><a href="#">CONTACT</a></li>
         </ul>
       </div>
-
-      {/* Empty transparent space */}
-      <div className="h-16"></div>
-
     </nav>
   );
 }
