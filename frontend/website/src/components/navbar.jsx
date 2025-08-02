@@ -23,10 +23,10 @@ export default function Navbar() {
       <div className="navbar-links">
         <ul>
           <li><a href="#">HOME</a></li>
-          <li><a href="#">BLOG</a></li>
-          <li><a href="#">GALLERY</a></li>
           <li><a href="#">ABOUT</a></li>
+          <li><a href="#">BLOG</a></li>
           <li><a href="#">PARTNER</a></li>
+          <li><a href="#">GALLERY</a></li>
           <li><a href="#">COMMUNITY</a></li>
           <li><a href="#">CONTACT</a></li>
         </ul>

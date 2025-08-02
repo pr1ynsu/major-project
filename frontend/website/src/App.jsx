@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Navbar from "./components/navbar";
+import Footer from "./components/Footer";
+import Hero from "./components/hero";
 import RoleSelection from "./pages/RoleSelection";
 import GovernmentLogin from "./pages/GovernmentLogin";
 import UserLogin from "./pages/UserLogin";
@@ -11,7 +12,7 @@ import Signup from "./pages/Signup";
 function ChalanPage() {
   return (
     <div className="flex items-center justify-center h-screen text-3xl text-white bg-green-600">
-      Welcome to Chalan Page ✅
+      Welcome to Chalan Page 
     </div>
   );
 }
@@ -19,36 +20,39 @@ function ChalanPage() {
 function AppWrapper() {
   const location = useLocation();
 
-  // Paths where navbar should be hidden
-  const hideNavbarPaths = [
+  // Paths where navbar & footer should be hidden
+  const hidePaths = [
     "/login",
     "/login/government",
     "/login/user",
     "/login/developer",
-    "/signup" // ✅ Hide navbar on signup page too
+    "/signup"
   ];
 
   return (
     <>
-      {/* Show Navbar only if path is NOT in hideNavbarPaths */}
-      {!hideNavbarPaths.includes(location.pathname) && <Navbar />}
+      {/* Navbar */}
+      {!hidePaths.includes(location.pathname) && <Navbar />}
 
       <Routes>
         {/* Public Pages */}
         <Route path="/" element={<Hero />} />
-        
+
         {/* Role Selection & Login Pages */}
         <Route path="/login" element={<RoleSelection />} />
         <Route path="/login/government" element={<GovernmentLogin />} />
         <Route path="/login/user" element={<UserLogin />} />
         <Route path="/login/developer" element={<DeveloperLogin />} />
-        
+
         {/* Chalan Page after successful login */}
         <Route path="/chalan" element={<ChalanPage />} />
-        
+
         {/* Signup Page */}
-        <Route path="/signup" element={<Signup />} /> {/* ✅ Real Signup Page */}
+        <Route path="/signup" element={<Signup />} /> 
       </Routes>
+
+      {/* Footer */}
+      {!hidePaths.includes(location.pathname) && <Footer />}
     </>
   );
 }
