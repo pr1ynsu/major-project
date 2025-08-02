@@ -7,6 +7,8 @@ import GovernmentLogin from "./pages/GovernmentLogin";
 import UserLogin from "./pages/UserLogin";
 import DeveloperLogin from "./pages/DeveloperLogin";
 import Signup from "./pages/Signup"; 
+import Contact from "./pages/Contact";
+
 
 // Temporary page for Chalan redirection
 function ChalanPage() {
@@ -43,6 +45,7 @@ function AppWrapper() {
         <Route path="/login/government" element={<GovernmentLogin />} />
         <Route path="/login/user" element={<UserLogin />} />
         <Route path="/login/developer" element={<DeveloperLogin />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* Chalan Page after successful login */}
         <Route path="/chalan" element={<ChalanPage />} />

@@ -28,7 +28,7 @@ export default function Navbar() {
           <li><a href="#">PARTNER</a></li>
           <li><a href="#">GALLERY</a></li>
           <li><a href="#">COMMUNITY</a></li>
-          <li><a href="#">CONTACT</a></li>
+          <li><Link to="/contact">CONTACT</Link></li>
         </ul>
       </div>
     </nav>
