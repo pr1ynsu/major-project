@@ -4,43 +4,71 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: transparent;
   padding: 1rem 2rem;
   z-index: 100;
   font-family: serif;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Glassmorphism background */
+  background: rgba(255, 255, 255, 0.05); /* transparent white */
+  backdrop-filter: blur(10px);            /* blur effect */
+  -webkit-backdrop-filter: blur(10px);    /* Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Logo + Button */
+/* Navbar show/hide on scroll */
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+/* ==== Top Section (Login Left, Logo Right) ==== */
 .navbar-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Spread items to edges */
   align-items: center;
-  padding: 0 2rem;   /* ✅ Add left & right padding to keep button inside */
-  max-width: 1200px; /* ✅ Prevent navbar items from stretching too wide */
-  margin: 0 auto;    /* ✅ Center the navbar contents */
-}
-.logo {
-  height: 50px;
-  width: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
 }
 
-/* Glass Login Button */
+/* Login Button - Left Side */
 .login-btn {
   background: rgba(255, 255, 255, 0.1);
   color: #E3D095;
   border: 1px solid rgba(227, 208, 149, 0.4);
-  padding: 0.6rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 50px;
   backdrop-filter: blur(6px);
   transition: 0.3s ease;
+  
+  /* Remove auto margin so it doesn’t stick to extreme left */
+  margin-left: 5rem;  /* Same spacing as navbar-top padding */
 }
 .login-btn:hover {
   background: rgba(227, 208, 149, 0.2);
   transform: scale(1.05);
 }
 
-/* Nav Links */
+/* Logo - Right Side */
+.logo-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+/* ==== Nav Links (Center) ==== */
 .navbar-links {
   margin-top: 0.5rem;
 }
@@ -69,12 +97,12 @@
 }
 
 .menu-btn {
-  background: rgba(14,33,72,0.9);
+  background: rgba(14, 33, 72, 0.9);
   color: #E3D095;
   padding: 15px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 .menu-btn:hover {
@@ -84,7 +112,7 @@
 /* Slide Menu */
 .menu-items {
   margin-top: 10px;
-  background: rgba(14,33,72,0.8);
+  background: rgba(14, 33, 72, 0.8);
   padding: 12px;
   border-radius: 10px;
   display: flex;

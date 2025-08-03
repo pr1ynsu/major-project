@@ -1,18 +1,37 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollY = useRef(0);
 
   const isHomePage = location.pathname === "/";
 
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current) {
+        // Scrolling down → hide navbar
+        setShowNavbar(false);
+      } else {
+        // Scrolling up → show navbar
+        setShowNavbar(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      {/* Full Navbar - Only on Home */}
       {isHomePage && (
-        <nav className="navbar">
+        <nav className={`navbar ${showNavbar ? "navbar-visible" : "navbar-hidden"}`}>
           <div className="navbar-top">
             <div className="logo-container">
               <img src="/logo.jpg" alt="Logo" className="logo" />
@@ -25,33 +44,15 @@ export default function Navbar() {
           <div className="navbar-links">
             <ul>
               <li><Link to="/">HOME</Link></li>
-              <li><a href="#">ABOUT</a></li>
-              <li><a href="#">BLOG</a></li>
-              <li><a href="#">PARTNER</a></li>
+              <li><a href="#about">ABOUT</a></li>
+              <li><Link to="/blog">BLOG</Link></li>
+              <li><a href="#partner">PARTNER</a></li>
               <li><Link to="/gallery">GALLERY</Link></li>
-              <li><a href="#">COMMUNITY</a></li>
+              <li><a href="#community">COMMUNITY</a></li>
               <li><Link to="/contact">CONTACT</Link></li>
             </ul>
           </div>
         </nav>
-      )}
-
-      {/* Floating Circle Menu - All other pages */}
-      {!isHomePage && (
-        <div className="floating-menu">
-          <div className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>☰</div>
-          {menuOpen && (
-            <div className="menu-items">
-              <Link to="/" onClick={() => setMenuOpen(false)}>HOME</Link>
-              <Link to="/gallery" onClick={() => setMenuOpen(false)}>GALLERY</Link>
-              <Link to="/contact" onClick={() => setMenuOpen(false)}>CONTACT</Link>
-              <a href="#">ABOUT</a>
-              <a href="#">BLOG</a>
-              <a href="#">PARTNER</a>
-              <a href="#">COMMUNITY</a>
-            </div>
-          )}
-        </div>
       )}
     </>
   );

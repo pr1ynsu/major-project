@@ -20,11 +20,13 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-main">
         {/* Left Section: Logo & Description */}
-        <div className="footer-section">
-          <h2 className="footer-logo">CITYWATCH</h2>
-          <p className="footer-subtitle">TECHNOLOGY</p>
+        <div className="footer-section footer-logo-section">
+          <img src="/logo.jpg" alt="CityWatch Logo" className="footer-logo-img" />
           <p className="footer-desc">
-            Lorem ipsum abstract ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+            CityWatch Technologies is dedicated to creating transparent, 
+            innovative, and citizen-friendly solutions for urban management. 
+            Our platform bridges the gap between citizens and authorities, 
+            ensuring efficiency, accountability, and a safer community.
           </p>
         </div>
 
@@ -32,16 +34,17 @@ export default function Footer() {
         <div className="footer-section">
           <h3>QUICK LINKS</h3>
           <ul>
-            <li><Link to="#">Blog</Link></li>
-            <li><Link to="/Gallery">Gallery</Link></li>
-            <li><Link to="#">Partner</Link></li>
-            <li><Link to="#">About</Link></li>
-            <li><Link to="#">Community</Link></li>
-            <li><Link to="/Contact">CONTACT</Link></li>
+            <li><Link to="/">HOME</Link></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><Link to="/blog">BLOG</Link></li>
+            <li><a href="#partner">PARTNER</a></li>
+            <li><Link to="/gallery">GALLERY</Link></li>
+            <li><a href="#community">COMMUNITY</a></li>
+            <li><Link to="/contact">CONTACT</Link></li>
           </ul>
         </div>
 
-        {/* Middle Section: Contact Info */}
+        {/* Contact Info */}
         <div className="footer-section">
           <h3>CONTACT INFO</h3>
           <p>KIIT University<br/>School of Computer Science</p>
@@ -49,7 +52,7 @@ export default function Footer() {
           <p>+91 1122334455</p>
         </div>
 
-        {/* Right Section: Social Links */}
+        {/* Social Links */}
         <div className="footer-section">
           <h3>FOLLOW US ON</h3>
           <div className="footer-icons">

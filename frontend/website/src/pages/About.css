@@ -1,0 +1,48 @@
+.about-section {
+  background: #f9fafb;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #1e3a8a;
+}
+
+.about-description {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-card {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-card h3 {
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.about-card p {
+  color: #444;
+  font-size: 0.95rem;
+}
