@@ -1,64 +1,52 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./UserLogin.css";
 
-export default function UserLogin() {
+export default function Login() {
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(false); // Track wrong login
 
-  const handleLogin = () => {
-    // Pseudo authentication
-    if (email === "test@example.com" && password === "12345") {
-      navigate("/chalan");
-    } else {
-      setLoginError(true); // Show error
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/auth/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        // ✅ Save token in localStorage
+        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("username", formData.username);
+
+        setMessage(`✅ Login Successful!`);
+        
+        // Redirect to forum page
+        navigate("/forum");
+      } else {
+        setMessage(`❌ ${data.error}`);
+      }
+    } catch (error) {
+      setMessage("❌ Network Error");
     }
   };
 
   return (
-    <div className="login-page">
-      {/* Background Video */}
-      <video autoPlay loop muted className="bg-video">
-        <source src="/bg-video.mp4" type="video/mp4" />
-      </video>
-
-      {/* Overlay */}
-      <div className="overlay"></div>
-
-      {/* Login Box */}
-      <div className="login-box">
-        <h2>User Login</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>Login</button>
-
-        {/* Show error message with links if wrong login */}
-        {loginError && (
-          <div className="error-message">
-            <p>Incorrect password!</p>
-            <div className="error-links">
-              <span onClick={() => navigate("/forgot-password")}>
-                Forgot Password?
-              </span>
-              <span onClick={() => navigate("/signup")}>
-                Register Now
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
+    <div style={{ padding: "20px", color: "white" }}>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", maxWidth: "300px" }}>
+        <input type="text" name="username" placeholder="Username" onChange={handleChange} />
+        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        <button type="submit">Login</button>
+      </form>
+      <p>{message}</p>
     </div>
   );
 }

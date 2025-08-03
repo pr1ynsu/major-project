@@ -50,6 +50,8 @@ function AppWrapper() {
         <Route path="/chalan" element={<ChalanPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/forum" element={<Forum />} />
+
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
 
