@@ -1,0 +1,136 @@
+/* ==== Full Navbar (Home Page) ==== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 100;
+  font-family: serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Glassmorphism background */
+  background: rgba(255, 255, 255, 0.05); /* transparent white */
+  backdrop-filter: blur(10px);            /* blur effect */
+  -webkit-backdrop-filter: blur(10px);    /* Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Navbar show/hide on scroll */
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+/* ==== Top Section (Login Left, Logo Right) ==== */
+.navbar-top {
+  display: flex;
+  justify-content: space-between; /* Spread items to edges */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
+/* Login Button - Left Side */
+.login-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #E3D095;
+  border: 1px solid rgba(227, 208, 149, 0.4);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
+  transition: 0.3s ease;
+  
+  /* Remove auto margin so it doesn’t stick to extreme left */
+  margin-left: 5rem;  /* Same spacing as navbar-top padding */
+}
+.login-btn:hover {
+  background: rgba(227, 208, 149, 0.2);
+  transform: scale(1.05);
+}
+
+/* Logo - Right Side */
+.logo-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+/* ==== Nav Links (Center) ==== */
+.navbar-links {
+  margin-top: 0.5rem;
+}
+.navbar-links ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+}
+.navbar-links ul li a {
+  text-decoration: none;
+  color: #E3D095;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+.navbar-links ul li a:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 10px #E3D095;
+}
+
+/* ==== Floating Navbar (Other Pages) ==== */
+.floating-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+}
+
+.menu-btn {
+  background: rgba(14, 33, 72, 0.9);
+  color: #E3D095;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+.menu-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Slide Menu */
+.menu-items {
+  margin-top: 10px;
+  background: rgba(14, 33, 72, 0.8);
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.menu-items a {
+  color: #E3D095;
+  text-decoration: none;
+}
+.menu-items a:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

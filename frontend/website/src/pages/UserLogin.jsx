@@ -1,23 +1,52 @@
-export default function GovernmentLogin() {
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50">
-      <div className="bg-white border border-black rounded-xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Government Login</h2>
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function Login() {
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/auth/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        // ✅ Save token in localStorage
+        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("username", formData.username);
+
+        setMessage(`✅ Login Successful!`);
         
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full px-3 py-2 mb-4 border border-gray-400 rounded-lg"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full px-3 py-2 mb-6 border border-gray-400 rounded-lg"
-        />
-        <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
-          Log In
-        </button>
-      </div>
+        // Redirect to forum page
+        navigate("/forum");
+      } else {
+        setMessage(`❌ ${data.error}`);
+      }
+    } catch (error) {
+      setMessage("❌ Network Error");
+    }
+  };
+
+  return (
+    <div style={{ padding: "20px", color: "white" }}>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", maxWidth: "300px" }}>
+        <input type="text" name="username" placeholder="Username" onChange={handleChange} />
+        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        <button type="submit">Login</button>
+      </form>
+      <p>{message}</p>
     </div>
   );
 }
