@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Blog One Heading",
+    "image": "/BlogData/blog1.jpg",
+    "file": "/BlogData/blog1.html"
+  },
+  {
+    "title": "Blog Two Heading",
+    "image": "/BlogData/blog2.jpg",
+    "file": "/BlogData/blog2.html"
+  }
+]

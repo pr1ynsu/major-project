@@ -1,33 +1,49 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./RoleSelection.css";
 
 export default function RoleSelection() {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold mb-10">Choose Your Role</h1>
+    <div className="role-selection">
+      
+      {/* Floating Menu Button */}
+      <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
 
-      <div className="flex gap-10">
-        {/* Government */}
+      {/* Slide-out Nav */}
+      <div className={`nav-menu ${menuOpen ? "open" : ""}`}>
+        <ul>
+          <li onClick={() => navigate("/")}>Home</li>
+          <li onClick={() => navigate("/about")}>About</li>
+          <li onClick={() => navigate("/gallery")}>Gallery</li>
+          <li onClick={() => navigate("/contact")}>Contact</li>
+        </ul>
+      </div>
+
+      {/* Title */}
+      <h1>Choose Your Role</h1>
+
+      {/* Role Circles */}
+      <div className="roles">
         <div
+          className="role-circle"
           onClick={() => navigate("/login/government")}
-          className="w-32 h-32 bg-blue-300 flex items-center justify-center rounded-full cursor-pointer hover:bg-blue-400 text-center font-semibold shadow-lg"
         >
           Government
         </div>
-
-        {/* User */}
         <div
+          className="role-circle"
           onClick={() => navigate("/login/user")}
-          className="w-32 h-32 bg-green-300 flex items-center justify-center rounded-full cursor-pointer hover:bg-green-400 text-center font-semibold shadow-lg"
         >
           User
         </div>
-
-        {/* Developer */}
         <div
+          className="role-circle"
           onClick={() => navigate("/login/developer")}
-          className="w-32 h-32 bg-yellow-300 flex items-center justify-center rounded-full cursor-pointer hover:bg-yellow-400 text-center font-semibold shadow-lg"
         >
           Developer
         </div>
