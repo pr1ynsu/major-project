@@ -29,18 +29,32 @@ export default function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.agreeRules || !formData.agreeMonitoring) {
-      alert("Please agree to all terms before signing up.");
-      return;
-    }
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!formData.agreeRules || !formData.agreeMonitoring) {
+    alert("Please agree to all terms before signing up.");
+    return;
+  }
+  if (formData.password !== formData.confirmPassword) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  const res = await fetch("http://localhost:5000/api/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  const data = await res.json();
+  if (res.ok) {
+    alert(data.message);
     navigate("/login/user");
-  };
+  } else {
+    alert(data.message);
+  }
+};
+
 
   return (
     <div className="signup-page">

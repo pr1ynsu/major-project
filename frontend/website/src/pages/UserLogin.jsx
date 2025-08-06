@@ -8,14 +8,31 @@ export default function UserLogin() {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false); // Track wrong login
 
-  const handleLogin = () => {
-    // Pseudo authentication
-    if (email === "test@example.com" && password === "12345") {
+  const handleLogin = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      alert(data.message);
+      localStorage.setItem("loggedInUser", JSON.stringify(data.user)); // Save user
       navigate("/chalan");
     } else {
-      setLoginError(true); // Show error
+      setLoginError(true);
+      alert(data.message);
     }
-  };
+  } catch (error) {
+    console.error("Login Error:", error);
+    alert("Something went wrong.");
+  }
+};
+
+
 
   return (
     <div className="login-page">
