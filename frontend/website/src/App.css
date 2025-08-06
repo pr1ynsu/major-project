@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .content-with-padding {
-  padding-top: 80px; /* Avoid content hiding behind navbar */
+  padding-top: 80px; 
 }
 
