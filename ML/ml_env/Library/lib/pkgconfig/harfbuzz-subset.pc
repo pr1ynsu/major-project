@@ -1,0 +1,10 @@
+prefix=C:/Users/txtdm/major-project/ML/ml_env/Library
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: harfbuzz-subset
+Description: HarfBuzz font subsetter
+Version: 10.2.0
+Requires: harfbuzz =  10.2.0
+Libs: -L${libdir} -lharfbuzz-subset
+Cflags: -I${includedir}/harfbuzz

@@ -6,6 +6,7 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -35,8 +36,33 @@ export default function Login() {
       }
     } catch (error) {
       setMessage("❌ Network Error");
+=======
+  const handleLogin = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      alert(data.message);
+      localStorage.setItem("loggedInUser", JSON.stringify(data.user)); // Save user
+      navigate("/chalan");
+    } else {
+      setLoginError(true);
+      alert(data.message);
+>>>>>>> 6af296c55be4b03704913233ba59210e297dac27
     }
-  };
+  } catch (error) {
+    console.error("Login Error:", error);
+    alert("Something went wrong.");
+  }
+};
+
+
 
   return (
     <div style={{ padding: "20px", color: "white" }}>

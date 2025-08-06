@@ -1,0 +1,12 @@
+prefix=C:/Users/txtdm/major-project/ML/ml_env/Library
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+toolsdir=${prefix}/bin
+orcc=${toolsdir}/orcc.exe
+
+Name: orc-0.4
+Description: Library of Optimized Inner Loops Runtime Compiler
+Version: 0.4.41
+Libs: -L${libdir} -lorc-0.4
+Cflags: -I${includedir}/orc-0.4
