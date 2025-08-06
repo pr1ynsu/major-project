@@ -43,13 +43,13 @@ export default function Navbar() {
 
           <div className="navbar-links">
             <ul>
-              <li><Link to="/">HOME</Link></li>
-              <li><a href="#about">ABOUT</a></li>
-              <li><Link to="/blog">BLOG</Link></li>
-              <li><a href="#partner">PARTNER</a></li>
-              <li><Link to="/gallery">GALLERY</Link></li>
-              <li><a href="#community">COMMUNITY</a></li>
-              <li><Link to="/contact">CONTACT</Link></li>
+            <li><Link to="/">HOME</Link></li>
+            <li><Link to="/About">ABOUT</Link></li>
+            <li><Link to="/blog">BLOG</Link></li>
+            <li><Link to="/Partner">PARTNER</Link></li>
+            <li><Link to="/gallery">GALLERY</Link></li>
+            <li><Link to="/Forum">COMMUNITY</Link></li>
+            <li><Link to="/contact">CONTACT</Link></li>
             </ul>
           </div>
         </nav>

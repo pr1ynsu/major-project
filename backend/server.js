@@ -67,5 +67,52 @@ app.post('/api/login', async (req, res) => {
   res.json({ success: true, message: 'Login successful', user: userData });
 });
 
+const forumFile = './forumMessages.json';
+
+// Get forum messages
+app.get('/api/forum/messages', (req, res) => {
+  fs.readFile(forumFile, 'utf-8', (err, data) => {
+    if (err) return res.status(500).json({ message: 'Error reading forum' });
+    const messages = JSON.parse(data || '[]');
+    res.json(messages);
+  });
+});
+
+// Post a new message
+app.post('/api/forum/messages', async (req, res) => {
+  const { email, message } = req.body;
+
+  // Check if user exists
+  let users = await readUsers();
+  const user = users.find((u) => u.email === email);
+  if (!user) {
+    return res.status(400).json({ message: 'User not registered' });
+  }
+
+  // Read existing messages
+  fs.readFile(forumFile, 'utf-8', (err, data) => {
+    if (err) return res.status(500).json({ message: 'Error reading forum' });
+    let messages = JSON.parse(data || '[]');
+
+    // Create new message
+    const newMessage = {
+      id: Date.now(),
+      name: user.name,
+      email,
+      message,
+      time: new Date().toLocaleString(),
+    };
+
+    messages.push(newMessage);
+
+    // Save back
+    fs.writeFile(forumFile, JSON.stringify(messages, null, 2), (err) => {
+      if (err) return res.status(500).json({ message: 'Error saving forum' });
+      res.json({ success: true, message: 'Message posted', newMessage });
+    });
+  });
+});
+
 
 app.listen(5000, () => console.log('Server running on port 5000'));
+

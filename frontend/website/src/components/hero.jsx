@@ -36,7 +36,7 @@ export default function Hero() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-6 z-20">
-          <a href="#about">
+          <a href="/About">
             <div className="animate-bounce text-white text-2xl">↓</div>
           </a>
         </div>

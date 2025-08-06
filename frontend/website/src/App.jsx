@@ -10,6 +10,9 @@ import Signup from "./pages/Signup";
 import ContactPage from "./pages/Contact"; // 👈 This is separate contact page if needed
 import Gallery from "./pages/Gallery";
 import Chalan from "./pages/Chalan";
+import Forum from "./pages/Forum";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
 
 // Temporary Chalan Page
 function ChalanPage() {
@@ -53,6 +56,10 @@ function AppWrapper() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/chalan" element={<Chalan />} />
+        <Route path="/forum" element={<Forum />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Blog" element={<Blog />} />
+
       </Routes>
 
       {/* Footer on all except login/signup */}
