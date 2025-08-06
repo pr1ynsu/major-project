@@ -6,7 +6,6 @@ export default function Chalan() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Get user from localStorage
     const storedUser = localStorage.getItem("loggedInUser");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -19,13 +18,12 @@ export default function Chalan() {
   if (!user) return null;
 
   return (
-    <div style={{ padding: "20px", color: "#fff", background: "#013220", height: "100vh" }}>
-      <h1>🚦 Welcome to Chalan Page</h1>
-      <h2>{user.name}</h2>
-      <p><b>Vehicle:</b> {user.vehicle}</p>
-      <p><b>License:</b> {user.license}</p>
-      <p><b>Email:</b> {user.email}</p>
-      <p><b>Mobile:</b> {user.mobile}</p>
+    <div style={{ padding: "20px", backgroundColor: "#013220", color: "white", height: "100vh" }}>
+      <h1>🚦 Welcome, {user.name}</h1>
+      <p><strong>Vehicle:</strong> {user.vehicle}</p>
+      <p><strong>License:</strong> {user.license}</p>
+      <p><strong>Email:</strong> {user.email}</p>
+      <p><strong>Mobile:</strong> {user.mobile}</p>
 
       <h3 style={{ marginTop: "20px" }}>📄 Outstanding Dues: ₹0</h3>
       <h3>🏆 Rewards: 2</h3>
