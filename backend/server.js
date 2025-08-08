@@ -1,3 +1,5 @@
+
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -5,6 +7,21 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const csv = require('fast-csv');
 const path = require('path');
+const mongoose = require('mongoose');
+const chalanRoute = require('./routes/chalan');
+// Connect to MongoDB using connection string from .env
+const mongoUri = process.env.MONGO_URI;
+mongoose.connect(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+mongoose.connection.on('connected', () => {
+  console.log('MongoDB connected');
+});
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+});
+
 
 const app = express();
 app.use(cors());
@@ -110,7 +127,8 @@ app.post('/api/forum/messages', async (req, res) => {
 });
 
 // ✅ ADD THIS LINE AT THE BOTTOM TO IMPORT AND USE THE CHALAN ROUTE
-const chalanRoute = require('./routes/chalan.route');
+const chalanRoutes = require('./routes/chalan'); 
+
 app.use('/api/violation', chalanRoute); // All chalan-related APIs will start with this path
 
 // Start server

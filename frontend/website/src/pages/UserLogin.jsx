@@ -19,30 +19,28 @@ export default function UserLogin() {
       const data = await res.json();
 
       if (res.ok && data.success) {
-        alert(data.message);
+        // ✅ Save user to localStorage
         localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+
+        // ✅ Automatically redirect without alert
         navigate("/chalan");
       } else {
         setLoginError(true);
-        alert(data.message);
       }
     } catch (error) {
       console.error("Login Error:", error);
-      alert("Something went wrong.");
+      setLoginError(true);
     }
   };
 
   return (
     <div className="login-page">
-      {/* Background Video */}
       <video autoPlay loop muted className="bg-video">
         <source src="/bg-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay */}
       <div className="overlay"></div>
 
-      {/* Login Box */}
       <div className="login-box">
         <h2>User Login</h2>
 
@@ -62,21 +60,18 @@ export default function UserLogin() {
 
         {loginError && (
           <div className="error-message">
-            <p>Incorrect password!</p>
+            <p>Incorrect email or password.</p>
             <div className="error-links">
-              <span onClick={() => navigate("/forgot-password")}>
-                Forgot Password?
-              </span>
-              <span onClick={() => navigate("/signup")}>
-                Register Now
-              </span>
+              <span onClick={() => navigate("/forgot-password")}>Forgot Password?</span>
+              <span onClick={() => navigate("/signup")}>Register Now</span>
             </div>
           </div>
         )}
 
-        {/* Register Prompt */}
         <div className="register-prompt">
-          <p>New here? <span onClick={() => navigate("/signup")}>Register Now</span></p>
+          <p>
+            New here? <span onClick={() => navigate("/signup")}>Register Now</span>
+          </p>
         </div>
       </div>
     </div>

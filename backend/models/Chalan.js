@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const ChalanSchema = new mongoose.Schema({
   vehicleNumber: { type: String, required: true },
@@ -7,4 +7,4 @@ const ChalanSchema = new mongoose.Schema({
   dateTime: { type: Date, default: Date.now },
 });
 
-export default mongoose.model("Chalan", ChalanSchema);
+module.exports = mongoose.model('Chalan', ChalanSchema);
