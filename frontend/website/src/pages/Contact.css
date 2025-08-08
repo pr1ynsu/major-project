@@ -1,7 +1,12 @@
+/* Contact Page Container */
 .contact-page {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Background Video */
@@ -13,7 +18,7 @@
   z-index: -2;
 }
 
-/* Blur Overlay */
+/* Overlay */
 .overlay {
   position: fixed;
   top: 0; left: 0;
@@ -23,36 +28,37 @@
   z-index: -1;
 }
 
-/* Container */
+/* Main Contact Container */
 .contact-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: stretch;
-  max-width: 1000px;
-  margin: auto;
   gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
 }
 
-/* Info Box */
-.info-box {
+/* Info and Form Boxes */
+.info-box, .form-box {
   flex: 1;
+  min-width: 300px;
   padding: 2rem;
-  background: rgba(72, 58, 160, 0.2);
   border-radius: 15px;
   backdrop-filter: blur(10px);
   color: #E3D095;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-/* Form Box */
-.form-box {
-  flex: 1;
-  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: rgba(121, 101, 193, 0.2);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  color: #E3D095;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.info-box:hover, .form-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Form Styling */
+.form-box {
   display: flex;
   flex-direction: column;
 }
@@ -64,8 +70,15 @@
   padding: 0.7rem;
   border: none;
   border-radius: 8px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: black;
+  transition: background 0.3s;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
 }
 
 .form-box button {
@@ -77,9 +90,27 @@
   color: #0E2148;
   cursor: pointer;
   font-weight: bold;
+  transition: background 0.3s;
 }
 
+.form-box button:hover {
+  background: #d1bb74;
+}
+
+/* Status Message */
 .status {
   margin-top: 1rem;
   font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-box, .form-box {
+    width: 90%;
+  }
 }

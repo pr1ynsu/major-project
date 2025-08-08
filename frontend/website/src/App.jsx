@@ -1,21 +1,24 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home"; // 👈 New combined homepage
+import Home from "./pages/Home"; 
 import RoleSelection from "./pages/RoleSelection";
 import GovernmentLogin from "./pages/GovernmentLogin";
 import UserLogin from "./pages/UserLogin";
 import DeveloperLogin from "./pages/DeveloperLogin";
 import Signup from "./pages/Signup";
-import ContactPage from "./pages/Contact"; // 👈 This is separate contact page if needed
+import ContactPage from "./pages/Contact"; 
 import Gallery from "./pages/Gallery";
 import Chalan from "./pages/Chalan";
+import Forum from "./pages/Forum";
+import About from "./pages/About";
+import Partner from "./pages/Partner";
 
-// Temporary Chalan Page
+// Chalan Page
 function ChalanPage() {
   return (
     <div className="flex items-center justify-center h-screen text-3xl text-white bg-green-600">
-      Welcome to Chalan Page ✅
+      Welcome to Chalan Page 
     </div>
   );
 }
@@ -23,10 +26,10 @@ function ChalanPage() {
 function AppWrapper() {
   const location = useLocation();
 
-  // Pages where Navbar should be shown
+  // Navbar should be shown
   const navbarPaths = ["/"];
 
-  // Pages where Footer should be hidden
+  // Footer should be hidden
   const hideFooterPaths = [
     "/login",
     "/login/government",
@@ -41,7 +44,7 @@ function AppWrapper() {
       {navbarPaths.includes(location.pathname) && <Navbar />}
 
       <Routes>
-        {/* 👇 Home now contains Hero, About, Blog, Partner, Contact */}
+        {/* Home now contains Hero, About, Blog, Partner, Contact */}
         <Route path="/" element={<Home />} />  
 
         <Route path="/login" element={<RoleSelection />} />
@@ -55,6 +58,9 @@ function AppWrapper() {
 
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/chalan" element={<Chalan />} />
+        <Route path="/forum" element={<Forum />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/partner" element={<Partner />} />
       </Routes>
 
       {/* Footer on all except login/signup */}

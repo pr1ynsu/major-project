@@ -43,13 +43,12 @@ export default function Navbar() {
 
           <div className="navbar-links">
             <ul>
-              <li><Link to="/">HOME</Link></li>
-              <li><a href="#about">ABOUT</a></li>
-              <li><Link to="/blog">BLOG</Link></li>
-              <li><a href="#partner">PARTNER</a></li>
-              <li><Link to="/gallery">GALLERY</Link></li>
-              <li><a href="#community">COMMUNITY</a></li>
-              <li><Link to="/contact">CONTACT</Link></li>
+            <li><Link to="/" onClick={() => window.scrollTo(0, 0)}>HOME</Link></li>
+            <li><Link to="/About" onClick={() => window.scrollTo(0, 0)}>ABOUT</Link></li>
+            <li><Link to="/Partner" onClick={() => window.scrollTo(0, 0)}>PARTNER</Link></li>
+            <li><Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>GALLERY</Link></li>
+            <li><Link to="/Forum" onClick={() => window.scrollTo(0, 0)}>COMMUNITY</Link></li>
+            <li><Link to="/contact" onClick={() => window.scrollTo(0, 0)}>CONTACT</Link></li>
             </ul>
           </div>
         </nav>

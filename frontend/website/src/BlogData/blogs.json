@@ -1,12 +1,12 @@
 [
   {
-    "title": "Blog One Heading",
-    "image": "/BlogData/blog1.jpg",
-    "file": "/BlogData/blog1.html"
+    "title": "First Blog",
+    "image": "blog1.jpg",
+    "slug": "blog1"
   },
   {
-    "title": "Blog Two Heading",
-    "image": "/BlogData/blog2.jpg",
-    "file": "/BlogData/blog2.html"
+    "title": "Second Blog",
+    "image": "blog2.jpg",
+    "slug": "blog2"
   }
 ]
