@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // backend/models/Chalan.js
 
+=======
+>>>>>>> 0c6380dbaeb3f169e85c27e4418a8b0e76501442
 const mongoose = require('mongoose');
 
 const ChalanSchema = new mongoose.Schema({
@@ -33,5 +36,9 @@ const ChalanSchema = new mongoose.Schema({
     }
 });
 
+<<<<<<< HEAD
 // CRITICAL: Export the model using Node.js standard module.exports
 module.exports = mongoose.model('Chalan', ChalanSchema);
+=======
+module.exports = mongoose.model('Chalan', ChalanSchema);
+>>>>>>> 0c6380dbaeb3f169e85c27e4418a8b0e76501442

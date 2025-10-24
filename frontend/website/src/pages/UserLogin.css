@@ -100,3 +100,21 @@
 .error-links span:hover {
   color: #ff4d4d;
 }
+
+.register-prompt {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #ffffffcc;
+  font-size: 0.95rem;
+}
+
+.register-prompt span {
+  color: #00bfff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.register-prompt span:hover {
+  color: #00e5ff;
+}

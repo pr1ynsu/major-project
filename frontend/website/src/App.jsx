@@ -12,7 +12,7 @@ import Gallery from "./pages/Gallery";
 import Chalan from "./pages/Chalan";
 import Forum from "./pages/Forum";
 import About from "./pages/About";
-import Blog from "./pages/Blog";
+import Partner from "./pages/Partner";
 
 // Chalan Page
 function ChalanPage() {
@@ -54,12 +54,13 @@ function AppWrapper() {
         <Route path="/chalan" element={<ChalanPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/forum" element={<Forum />} />
+
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/chalan" element={<Chalan />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/About" element={<About />} />
-        <Route path="/Blog" element={<Blog />} />
-
+        <Route path="/partner" element={<Partner />} />
       </Routes>
 
       {/* Footer on all except login/signup */}

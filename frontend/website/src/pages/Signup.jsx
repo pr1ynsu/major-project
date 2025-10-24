@@ -70,17 +70,7 @@ export default function Signup() {
       <div className="signup-container">
         {/* Left - Why Choose Us */}
         <div className="info-box">
-          <h2>Why Choose Us?</h2>
-          <p>
-            🚦 Join our Chalan Service to make roads safer!  
-            ✅ Earn rewards for following traffic rules.  
-            ⚡ Get notified of violations instantly.  
-            🎯 Keep your driving record clean and win incentives.
-          </p>
-          <p>
-            By signing up, you’re becoming a part of a community working 
-            towards safe, smart, and responsible driving.
-          </p>
+          
            <h2>Why Choose Us?</h2>
   <p>🚦 Make roads safer by joining a responsible community.</p>
   <p>✅ Earn rewards for following traffic rules.</p>

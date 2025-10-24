@@ -1,11 +1,16 @@
+<<<<<<< HEAD
 # ML/script.py - The AI Worker Simulation
 
 import requests
 import json
 import time
+=======
+import csv
+>>>>>>> 0c6380dbaeb3f169e85c27e4418a8b0e76501442
 from datetime import datetime
 import sys
 
+<<<<<<< HEAD
 # --- CONFIGURATION (UPDATE THESE PATHS) ---
 # The exact URL for your Node.js API endpoint
 NODE_API_URL = 'http://localhost:5000/api/violation'
@@ -62,3 +67,26 @@ if __name__ == '__main__':
         mock_payload = generate_mock_violation_data()
         log_violation_to_api(mock_payload)
         time.sleep(5) # Wait 5 seconds before logging the next violation
+=======
+# Simulated ML output
+output = {
+    'vehicle': 'city honda',
+    'license': 'dl1234567890',
+    'violation_type': 'Signal Jump',
+    'image': 'city_honda_1.jpg',
+    'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+}
+
+# Write to violations.csv in backend
+with open('../backend/violations.csv', 'a', newline='') as file:
+    writer = csv.DictWriter(file, fieldnames=['vehicle', 'license', 'violation_type', 'image', 'timestamp'])
+    
+    # Optional: write header if file is empty
+    file.seek(0, 2)  # Move to end of file
+    if file.tell() == 0:
+        writer.writeheader()
+    
+    writer.writerow(output)
+
+print("Violation added successfully:", output)
+>>>>>>> 0c6380dbaeb3f169e85c27e4418a8b0e76501442
