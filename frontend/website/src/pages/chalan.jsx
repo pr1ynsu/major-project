@@ -22,6 +22,7 @@ export default function Chalan() {
   // Fetch chalans using vehicle number
   useEffect(() => {
     const fetchChalans = async () => {
+      // Corrected URL: Use port 5000 for Node.js and the correct endpoint
       if (user?.vehicle) {
         try {
           const res = await axios.get(`http://localhost:5000/api/violation/${user.vehicle}`);
@@ -32,7 +33,9 @@ export default function Chalan() {
       }
     };
 
-    fetchChalans();
+    if (user) {
+      fetchChalans();
+    }
   }, [user]);
 
   if (!user) return null;
