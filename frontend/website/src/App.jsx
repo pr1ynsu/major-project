@@ -1,70 +1,64 @@
+// src/App.jsx
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/navbar";
+import React from "react";
+
+// existing components/pages you already had
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home"; 
+import Home from "./pages/Home";
 import RoleSelection from "./pages/RoleSelection";
 import GovernmentLogin from "./pages/GovernmentLogin";
-import UserLogin from "./pages/UserLogin";
+import Login from "./pages/Login"; // your combined Login page
 import DeveloperLogin from "./pages/DeveloperLogin";
-import Signup from "./pages/Signup";
-import ContactPage from "./pages/Contact"; 
+import ContactPage from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import Chalan from "./pages/Chalan";
 import Forum from "./pages/Forum";
 import About from "./pages/About";
 import Partner from "./pages/Partner";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import AnnualReturn from "./pages/AnnualReturn";
+import PoshPolicy from "./pages/PoshPolicy";
 
-// Chalan Page
-function ChalanPage() {
-  return (
-    <div className="flex items-center justify-center h-screen text-3xl text-white bg-green-600">
-      Welcome to Chalan Page 
-    </div>
-  );
-}
+// new pages/layouts (mock-backed)
+import UserLayout from "./pages/User/UserLayout";
+import GovLayout from "./pages/Gov/GovLayout";
 
 function AppWrapper() {
   const location = useLocation();
 
-  // Navbar should be shown
   const navbarPaths = ["/"];
-
-  // Footer should be hidden
-  const hideFooterPaths = [
-    "/login",
-    "/login/government",
-    "/login/user",
-    "/login/developer",
-    "/signup"
-  ];
+  const hideFooterPaths = ["/login", "/login/government", "/login/user", "/login/developer"];
+  const showNavbar = navbarPaths.includes(location.pathname);
+  const showFooter = !hideFooterPaths.includes(location.pathname);
 
   return (
     <>
-      {/* Show Navbar only on Home */}
-      {navbarPaths.includes(location.pathname) && <Navbar />}
+      {showNavbar && <Navbar />}
 
       <Routes>
-        {/* Home now contains Hero, About, Blog, Partner, Contact */}
-        <Route path="/" element={<Home />} />  
-
+        {/* preserve your existing routes */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<RoleSelection />} />
-        <Route path="/login/government" element={<GovernmentLogin />} />
-        <Route path="/login/user" element={<UserLogin />} />
+        <Route path="/login/user" element={<Login />} />
+        <Route path="/login/government" element={<Login />} />
         <Route path="/login/developer" element={<DeveloperLogin />} />
-        <Route path="/chalan" element={<ChalanPage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/forum" element={<Forum />} />
-
-        <Route path="/contact" element={<ContactPage />} />
         <Route path="/chalan" element={<Chalan />} />
         <Route path="/forum" element={<Forum />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/partner" element={<Partner />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/annual-return" element={<AnnualReturn />} />
+        <Route path="/posh-policy" element={<PoshPolicy />} />
+
+        {/* NEW: user & gov nested routes */}
+        <Route path="/user/*" element={<UserLayout />} />
+        <Route path="/gov/*" element={<GovLayout />} />
       </Routes>
 
-      {/* Footer on all except login/signup */}
-      {!hideFooterPaths.includes(location.pathname) && <Footer />}
+      {showFooter && <Footer />}
     </>
   );
 }

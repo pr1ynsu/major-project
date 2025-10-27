@@ -70,14 +70,14 @@
   padding: 0.7rem;
   border: none;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.3);
   color: black;
   transition: background 0.3s;
 }
 
 .form-box input:focus,
 .form-box textarea:focus {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.3);
   outline: none;
 }
 
