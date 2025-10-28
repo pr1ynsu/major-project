@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import React from "react";
 
 // existing components/pages you already had
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import RoleSelection from "./pages/RoleSelection";
