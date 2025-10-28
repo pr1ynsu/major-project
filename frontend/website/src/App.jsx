@@ -12,7 +12,7 @@ import Login from "./pages/Login"; // your combined Login page
 import DeveloperLogin from "./pages/DeveloperLogin";
 import ContactPage from "./pages/Contact";
 import Gallery from "./pages/Gallery";
-import Chalan from "./pages/Chalan";
+
 import Forum from "./pages/Forum";
 import About from "./pages/About";
 import Partner from "./pages/Partner";
@@ -43,7 +43,6 @@ function AppWrapper() {
         <Route path="/login/user" element={<Login />} />
         <Route path="/login/government" element={<Login />} />
         <Route path="/login/developer" element={<DeveloperLogin />} />
-        <Route path="/chalan" element={<Chalan />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<ContactPage />} />

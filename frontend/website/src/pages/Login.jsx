@@ -223,10 +223,9 @@ export default function Login() {
               <input name="guardianName" value={form.guardianName} onChange={e => update("guardianName", e.target.value)} placeholder="Guardian Name" />
               <input name="guardianNumber" value={form.guardianNumber} onChange={e => update("guardianNumber", e.target.value)} placeholder="Guardian Number" />
 
-              <select name="userType" value={form.userType} onChange={e => update("userType", e.target.value)}>
+              <select name="userType" value={form.userType} onChange={e => update("userType", e.target.value)} aria-label="Select user type">
                 <option value="User">User</option>
                 <option value="Government">Government</option>
-                <option value="Developer">Developer</option>
               </select>
 
               <input name="password" type="password" value={form.password} onChange={e => update("password", e.target.value)} placeholder="Password" required />

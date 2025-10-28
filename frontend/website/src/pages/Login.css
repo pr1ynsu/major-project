@@ -102,8 +102,31 @@ html,body,#root { height:100%; margin:0; }
 
 .register-form input::placeholder { color: rgba(255,255,255,0.6); }
 
-.register-form label.small-checkbox {
-  display:flex; gap:10px; align-items:flex-start; color: rgba(255,255,255,0.9); font-size: 0.92rem; margin-top: 6px;
+/* ====== Select styling fix ======
+   Make selected option readable across browsers:
+   - give the select a high-contrast background (accent) and dark text
+   - keep options styled reasonably (option styling is limited by browser)
+=================================*/
+.register-form select {
+  /* Use the accent background so selected value is readable */
+  background: linear-gradient(90deg, var(--accent), #f5dfb8);
+  color: #0E2148; /* dark text to contrast the warm accent */
+  font-weight: 600;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  padding-right: 40px; /* room for arrow */
+}
+
+/* custom arrow (simple) */
+.register-form select::-ms-expand { display: none; } /* hide default IE arrow */
+.register-form select::after { /* pseudo won't show for select in most browsers; we add an arrow using wrapper if needed */ }
+
+/* Try to style option text where supported */
+.register-form select option {
+  color: #0E2148;
+  background: white;
 }
 
 /* Submit */
