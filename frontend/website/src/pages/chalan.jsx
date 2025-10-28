@@ -22,7 +22,12 @@ export default function Chalan() {
   // Fetch chalans using license number
   useEffect(() => {
     const fetchChalans = async () => {
+<<<<<<< HEAD
+      // Corrected URL: Use port 5000 for Node.js and the correct endpoint
+      if (user?.vehicle) {
+=======
       if (user?.license) {
+>>>>>>> 0c6380dbaeb3f169e85c27e4418a8b0e76501442
         try {
           const res = await axios.get(`http://localhost:5000/api/violations/license/${user.license}`);
           setChalans(res.data);
@@ -32,7 +37,9 @@ export default function Chalan() {
       }
     };
 
-    fetchChalans();
+    if (user) {
+      fetchChalans();
+    }
   }, [user]);
 
   if (!user) return null;

@@ -19,7 +19,16 @@
     "express": "^5.1.0",
     "fast-csv": "^5.0.5",
     "jsonwebtoken": "^9.0.2",
+<<<<<<< HEAD
     "mongoose": "^8.19.2"
   },
   "description": ""
+=======
+<<<<<<< HEAD
+    "mongoose": "^8.17.0"
+=======
+    "mongoose": "^8.17.1"
+>>>>>>> 0c6380dbaeb3f169e85c27e4418a8b0e76501442
+  }
+>>>>>>> 0eb52290921bd1335f6b1aa832dd22dec6ef81ac
 }

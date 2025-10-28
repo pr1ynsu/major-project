@@ -11,3 +11,4 @@ export default function Violations() {
   ];
   return <RecordsTable columns={columns} fetcher={mockFetcher} type="violations" role="user" />;
 }
+
